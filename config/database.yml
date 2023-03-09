@@ -84,3 +84,4 @@ production:
   database: Lushify_production
   username: Lushify
   password: <%= ENV["LUSHIFY_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
