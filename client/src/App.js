@@ -4,6 +4,7 @@ import {useState, useEffect, useMemo} from "react";
 import {BrowserRouter, Route, Routes} from "react-router-dom"
 import { UserContext } from './Context/UserContext';
 import Navbar from './Components/Navbar';
+import Signup from './Components/Signup';
 
 function App() {
   const [currentUser, setCurrentUser] = useState()
@@ -33,11 +34,15 @@ function App() {
 
   return (
     <BrowserRouter>
+
       <div className="App">
         <UserContext.Provider
         value={providerValue}
         >
-          <Navbar />
+          <Navbar setLoggedIn={setLoggedIn} currentUser={currentUser} />
+          <Routes>
+            <Route path="/signup" element={<Signup />}/>
+          </Routes>
         </UserContext.Provider>
       </div>
     </BrowserRouter>

@@ -1,6 +1,7 @@
 import React from 'react'
 import { useContext } from 'react'
 import { UserContext } from '../Context/UserContext'
+import { NavLink } from 'react-router-dom'
 
 const Navbar = () => {
     const { loggedIn } = useContext(UserContext)
@@ -9,11 +10,10 @@ const Navbar = () => {
         // add the the other routes here
     } else {
         return (
-            <div className='navbar'>
-                <ul>
-                    <li>LogIn</li>
-                    <li>Signup</li>
-                </ul>
+            <div className='navbar-parent'>
+                <div className='navbar'>
+                    <a><NavLink to={"/signup"}>Signup</NavLink></a>
+                </div>
             </div>
         )
 
