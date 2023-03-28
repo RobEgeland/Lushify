@@ -54,6 +54,7 @@ const Signup = () => {
   return (
     <div>
         <form onSubmit={handleSubmit}>
+            <h1>Sign Up</h1>
             <label>Business Name:</label>
             <br/>
             <input name="name" value={newUser.name} onChange={handleSignUpChange}></input>

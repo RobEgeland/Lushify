@@ -12,6 +12,7 @@ const Navbar = () => {
         return (
             <div className='navbar-parent'>
                 <div className='navbar'>
+                    <span className='logo'>Lushify</span>
                     <a><NavLink to={"/signup"}>Signup</NavLink></a>
                     <a><NavLink to={"/login"}>LogIn</NavLink></a>
                 </div>
