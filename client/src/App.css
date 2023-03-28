@@ -96,6 +96,23 @@ html {
   margin: auto auto;
 }
 
+.signup-div {
+  display: flex;
+  justify-content: center;
+}
+
+.submit-form {
+  background-image: linear-gradient(to bottom right, #e0829d, #8f5774);
+  
+  border-radius: 30px;
+  box-sizing: border-box;
+  position: absolute;
+  top: 250px;
+  height: 400px;
+  padding: 30px;
+  width: 320px;
+}
+
 .email {
   padding: 10px;
 }

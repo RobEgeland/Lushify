@@ -52,8 +52,8 @@ const Signup = () => {
         })
     }
   return (
-    <div>
-        <form onSubmit={handleSubmit}>
+    <div className='signup-div'>
+        <form className='submit-form' onSubmit={handleSubmit}>
             <h1>Sign Up</h1>
             <label>Business Name:</label>
             <br/>
