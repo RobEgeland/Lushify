@@ -46,8 +46,8 @@ const LogIn = () => {
         })
     }
   return (
-    <div>
-        <form onSubmit={handleSubmit}>
+    <div className='login-div'>
+        <form className='login-form' onSubmit={handleSubmit}>
             <h1>Log In</h1>
             {loggedIn ? null : <div className='error'>{errors}</div>}
             <div className='input-container'>

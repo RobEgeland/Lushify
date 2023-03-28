@@ -78,3 +78,42 @@ html {
   color: black;
 }
 
+.login-div {
+  display: flex;
+  justify-content: center;
+}
+
+.login-form {
+  background-image: linear-gradient(to bottom right, #e0829d, #8f5774);
+  
+  border-radius: 30px;
+  box-sizing: border-box;
+  position: absolute;
+  top: 250px;
+  height: 350px;
+  padding: 30px;
+  width: 320px;
+  margin: auto auto;
+}
+
+.email {
+  padding: 10px;
+}
+
+.submit {
+  background-color: #036264;
+  border-radius: 12px;
+  border: 0;
+  box-sizing: border-box;
+  color: #eee;
+  cursor: pointer;
+  font-size: 18px;
+  height: 50px;
+  margin-top: 38px;
+  outline: 0;
+  text-align: center;
+  width: 100
+}
+
+
+
