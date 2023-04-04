@@ -3,11 +3,21 @@ import { useContext } from 'react'
 import { UserContext } from '../Context/UserContext'
 import { NavLink } from 'react-router-dom'
 
-const Navbar = () => {
+const Navbar = ({handlePopupChange}) => {
     const { loggedIn } = useContext(UserContext)
 
     if(loggedIn) {
-        // add the the other routes here
+        return (
+            <div className='navbar-parent'>
+                <div className='navbar'>
+                    <span className='logo'>Lushify</span>
+                    <div className='nav-items-main'>
+                    <a><NavLink to={"/take-order"}>Take Order</NavLink></a>
+                    </div>
+                    <a><NavLink onClick={handlePopupChange} to={"/take-order"}>Log Out</NavLink></a>
+                </div>
+            </div>
+        )
     } else {
         return (
             <div className='navbar-parent'>

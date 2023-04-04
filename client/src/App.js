@@ -6,10 +6,17 @@ import { UserContext } from './Context/UserContext';
 import Navbar from './Components/Navbar';
 import Signup from './Components/Signup';
 import LogIn from './Components/LogIn';
+import TakeOrder from './Components/TakeOrder';
+import LogOutPopup from './Components/LogOutPopup';
 
 function App() {
   const [currentUser, setCurrentUser] = useState()
   const [loggedIn, setLoggedIn] = useState(false)
+  const [popupIsOpen, setPopupIsOpen] = useState(false)
+
+  function handlePopupChange() {
+    setPopupIsOpen(!popupIsOpen)
+  }
 
   useEffect(() => {
     fetch("/current-user")
@@ -33,6 +40,14 @@ function App() {
   }), [loggedIn, currentUser])
 
 
+  function handleLogOut() {
+    fetch("/logout", {method: "DELETE"})
+    setCurrentUser()
+    setLoggedIn(false)
+    setPopupIsOpen(false)
+  }
+
+
   return (
     <BrowserRouter>
 
@@ -40,12 +55,14 @@ function App() {
         <UserContext.Provider
         value={providerValue}
         >
-          <Navbar setLoggedIn={setLoggedIn} currentUser={currentUser} />
+          <Navbar handlePopupChange={handlePopupChange} setLoggedIn={setLoggedIn} currentUser={currentUser} />
           <Routes>
             <Route path="/signup" element={<Signup />}/>
             <Route path="/login" element={<LogIn />}/>
+            <Route path="/take-order" element={<TakeOrder />}/>
           </Routes>
         </UserContext.Provider>
+        { popupIsOpen ? <LogOutPopup handleLogOut={handleLogOut} handlePopupChange={handlePopupChange} /> : null}
       </div>
     </BrowserRouter>
   );

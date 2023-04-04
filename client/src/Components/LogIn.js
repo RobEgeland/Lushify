@@ -36,7 +36,7 @@ const LogIn = () => {
                 res.json().then(data => {
                     setCurrentUser(data)
                     setLoggedIn(true)
-                    navigate("/")
+                    navigate("/take-order")
                 })
             }else {
                 res.json().then(error => {
