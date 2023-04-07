@@ -198,7 +198,7 @@ html {
   outline: none;
   border-radius: 15px;
   padding: 10px;
-  background-color: #ccc;
+  background-color: #EEE;
   box-shadow: inset 2px 5px 10px rgba(0,0,0,0.3);
   transition: 300ms ease-in-out;
 }
