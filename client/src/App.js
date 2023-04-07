@@ -6,7 +6,7 @@ import { UserContext } from './Context/UserContext';
 import Navbar from './Components/Navbar';
 import Signup from './Components/Signup';
 import LogIn from './Components/LogIn';
-import TakeOrder from './Components/TakeOrder';
+import TakeOrder from './Components/TakeOrder/TakeOrder';
 import LogOutPopup from './Components/LogOutPopup';
 
 function App() {

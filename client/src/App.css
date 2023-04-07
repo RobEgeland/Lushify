@@ -256,5 +256,22 @@ html {
   background-color: #fff;
   font-weight: 600;
 }
-/* employee input */
+/* Pickup form */
+.customer-info {
+  padding: 10px;
+  margin: auto;
+  margin-top: 60px;
+  height: 200px;
+  width: 80%;
+  border-radius: 25px;
+  background-color: white;
+}
+.customer-info h2 {
+  float: left;
+  padding-left: 10px;
+}
+
+.inputs-parent input {
+  width: 300px;
+}
 

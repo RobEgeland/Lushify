@@ -1,4 +1,5 @@
 import React from 'react'
+import NewPickupForm from './NewPickupForm'
 
 const TakeOrder = () => {
   return (
@@ -20,6 +21,8 @@ const TakeOrder = () => {
           </div>
         </div>
       </div>
+
+      <NewPickupForm />
     </div>
   )
 }
