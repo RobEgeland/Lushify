@@ -55,21 +55,21 @@ const Signup = () => {
     <div className='signup-div'>
         <form className='submit-form' onSubmit={handleSubmit}>
             <h1>Sign Up</h1>
-            <label>Business Name:</label>
+            <label>Business Name</label>
             <br/>
-            <input name="name" value={newUser.name} onChange={handleSignUpChange}></input>
+            <input className='input' name="name" value={newUser.name} onChange={handleSignUpChange}></input>
             <br/>
-            <label>Email:</label>
+            <label>Email</label>
             <br/>
-            <input name="email" value={newUser.email} onChange={handleSignUpChange}></input>
+            <input className='input' name="email" value={newUser.email} onChange={handleSignUpChange}></input>
             <br/>
-            <label>Password:</label>
+            <label>Password</label>
             <br/>
-            <input type={"password"} name="password" value={newUser.password} onChange={handleSignUpChange}></input>
+            <input className='input' type={"password"} name="password" value={newUser.password} onChange={handleSignUpChange}></input>
             <br/>
-            <label>Confirm Password:</label>
+            <label>Confirm Password</label>
             <br/>
-            <input type={"password"} name="password_confirmation" value={newUser.password_confirmation} onChange={handleSignUpChange}></input>
+            <input className='input' type={"password"} name="password_confirmation" value={newUser.password_confirmation} onChange={handleSignUpChange}></input>
             <br/>
             <input className='submit' type={"submit"} value={"Sign Up"}/>
         </form>

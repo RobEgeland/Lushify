@@ -59,7 +59,7 @@ const LogIn = () => {
                 <div>
                 <label className='placeholder' htmlFor='password'>Password</label>
                     <br/>
-                    <input className='input' id="password" name='password' type={"text"} value={user.password} onChange={handleChange}  />
+                    <input className='input' id="password" name='password' type={"password"} value={user.password} onChange={handleChange}  />
                 </div>
                 <input className='submit' type={"submit"} value={"Log In"}/>
             </div>
