@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import NewPickupForm from './CustomerInfo'
+import CardMessage from './CardMessage'
 
 const TakeOrder = () => {
   const [delivOrPickup, setDelivOrPickup] = useState(false)  //false = delivery
@@ -26,6 +27,8 @@ const TakeOrder = () => {
       </div>
 
       <NewPickupForm />
+      <br></br>
+      <CardMessage />
     </div>
   )
 }
