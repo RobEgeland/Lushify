@@ -12,10 +12,10 @@ const NewPickupForm = () => {
             
             <table cellSpacing={"50px"}>
               <tr>
-                <td></td>
-                <td><input required="" placeholder="Search Customer" type="text" class="input"/></td>
+                {/* <td></td> */}
+                <td><input required="" placeholder="Search Customer" type="text" class="customer-search"/></td>
                 
-                </tr>
+              </tr>
               <tr>
                 <td><input required="" placeholder="First Name" type="text" class="input"/></td>
                 <td><input required="" placeholder="Last Name" type="text" class="input"/></td>

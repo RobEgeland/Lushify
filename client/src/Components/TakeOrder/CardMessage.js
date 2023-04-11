@@ -19,7 +19,7 @@ const CardMessage = () => {
                 <h2>Card Message</h2>
             </div>
             <div className='message'>
-                <textarea class="input" placeholder='Message' rows="10" cols="50"/>
+                <textarea spellCheck={true} class="input" placeholder='Message' rows="10" cols="50"/>
             </div>
             <div className='order-date'>
                 <label>Delivery/Pickup Date: </label>
