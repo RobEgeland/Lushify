@@ -1,7 +1,10 @@
-import React from 'react'
-import NewPickupForm from './NewPickupForm'
+import React, {useState} from 'react'
+import NewPickupForm from './CustomerInfo'
 
 const TakeOrder = () => {
+  const [delivOrPickup, setDelivOrPickup] = useState(false)  //false = delivery
+
+
   return (
     <div>
       <div className='parent'>
@@ -12,11 +15,11 @@ const TakeOrder = () => {
           <div class="radio-inputs">
             <label class="radio">
               <input type="radio" name="radio" checked/>
-              <span class="name">Delivery</span>
+              <span onClick={() => setDelivOrPickup(false)} class="name">Delivery</span>
             </label>
             <label class="radio">
               <input type="radio" name="radio"/>
-              <span class="name">Pickup</span>
+              <span onClick={() => setDelivOrPickup(true)} class="name">Pickup</span>
             </label>
           </div>
         </div>

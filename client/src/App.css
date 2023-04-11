@@ -261,7 +261,7 @@ html {
   padding: 10px;
   margin: auto;
   margin-top: 60px;
-  height: 200px;
+  height: fit-content;
   width: 80%;
   border-radius: 25px;
   background-color: white;
@@ -275,3 +275,18 @@ html {
   width: 300px;
 }
 
+
+.step-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+}
+table {
+  margin: auto;
+}
+
+.inputs-parent select {
+  width: 300px;
+}
+/* when select is clicked will go to correct width */
