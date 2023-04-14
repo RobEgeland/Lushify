@@ -430,4 +430,25 @@ table {
   transform: scale(0.95);
 }
 
+/* Order Total */
+
+.order-total {
+  height: fit-content;
+  padding: 10px;
+  margin: auto;
+  margin-top: 60px;
+  width: 80%;
+  border-radius: 25px;
+  background-color: white;
+  display: inline-block;
+}
+
+.order-total hr {
+  margin: 10px;
+}
+
+.desc-card {
+  float: left;
+}
+
 

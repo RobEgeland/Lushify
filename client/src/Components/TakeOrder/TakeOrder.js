@@ -2,9 +2,29 @@ import React, {useState} from 'react'
 import NewPickupForm from './CustomerInfo'
 import CardMessage from './CardMessage'
 import ProductInfo from './ProductInfo'
+import OrderTotal from './OrderTotal'
 
 const TakeOrder = () => {
   const [delivOrPickup, setDelivOrPickup] = useState(false)  //false = delivery
+  const [description, setDescription] = useState("")
+  const [price, setPrice] = useState(0)
+  const [quantity, setQuantity] = useState(0)
+  const [products, setProducts] = useState([])
+
+  function handleAddNewProduct(e) {
+    e.preventDefault()
+    setProducts([
+      ...products,
+      {
+        description: description,
+        price: price,
+        quantity: quantity
+      }
+    ])
+    setDescription("")
+    setPrice(0)
+    setQuantity(0)
+  }
 
 
   return (
@@ -31,7 +51,17 @@ const TakeOrder = () => {
       <br></br>
       <CardMessage />
       <br></br>
-      <ProductInfo />
+      <ProductInfo 
+      description={description} 
+      setDescription={setDescription} 
+      price={price} 
+      setPrice={setPrice}
+      quantity={quantity}  
+      setQuantity={setQuantity}
+      handleAddNewProduct={handleAddNewProduct}
+      />
+      <br></br>
+      <OrderTotal products={products} />
     </div>
   )
 }

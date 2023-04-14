@@ -1,9 +1,9 @@
 import React from 'react'
 
-const ProductInfo = () => {
+const ProductInfo = ({description, setDescription, price, setPrice, quantity, setQuantity, handleAddNewProduct}) => {
   return (
     <div>
-        <form>
+        <form onSubmit={(e) => handleAddNewProduct(e)} >
             <div className='product-info'>
                 <div className='step-title'>
                     <h2>Product Info</h2>
@@ -11,11 +11,11 @@ const ProductInfo = () => {
                 <div className='product-inputs'>
                 <div className='price-description'>
                     <div className='descirption'>
-                        <textarea spellCheck={true} class="input" placeholder='Description' rows="8" cols="100"/>
+                        <textarea value={description} onChange={(e) => setDescription(e.target.value)} spellCheck={true} class="input" placeholder='Description' rows="5" cols="100"/>
                     </div>
                     <div className='unit-price'>
-                        <input required="" placeholder="Units" type="text" class="product-input"/>
-                        <input required="" placeholder="Price" type="text" class="product-input"/>
+                        <input value={quantity} onChange={(e) => setQuantity(e.target.value)} required="" placeholder="Quantity" type="text" class="product-input"/>
+                        <input value={price} onChange={(e) => setPrice(e.target.value)} required="" placeholder="Price" type="text" class="product-input"/>
                     </div>
                 </div>
                 <input required="" placeholder="Search Product" type="text" class="product-search"/>
