@@ -42,7 +42,7 @@ body { min-height: 100vh; }
 }
 
 html {
-  background-image: linear-gradient(to bottom right, #dac4d0, white);
+  background-color: #dac4d0;
 }
 
 .navbar-parent {
@@ -290,7 +290,8 @@ table {
   width: 300px;
 }
 .customer-search {
-  border: none;
+  width: 600px;
+  /* border: none; */
   outline: none;
   border-radius: 15px;
   padding: 10px;
@@ -322,7 +323,9 @@ table {
 
 .card-message h2 {
   float: left;
-  padding-left: 10px;
+  margin-top: 0px;
+  margin-bottom: 140px;
+  /* padding-left: 10px; */
 }
 
 .message {
@@ -335,3 +338,96 @@ table {
   padding: 20px;
   padding-top: 100px;
 }
+
+/* Product Info */
+
+.product-info {
+  height: fit-content;
+  padding: 10px;
+  margin: auto;
+  margin-top: 60px;
+  width: 80%;
+  border-radius: 25px;
+  background-color: white;
+  display: inline-block;
+}
+
+.product-search {
+  width: 750px;
+  border: none;
+  outline: none;
+  border-radius: 15px;
+  padding: 10px;
+  background-color: #EEE;
+  box-shadow: inset 2px 5px 10px rgba(0,0,0,0.3);
+  transition: 300ms ease-in-out;
+  float: left;
+  margin-left: 30px;
+}
+
+.product-input {
+  width: 100px;
+  border: none;
+  outline: none;
+  border-radius: 15px;
+  padding: 10px;
+  padding-left: 10px;
+  background-color: #EEE;
+  box-shadow: inset 2px 5px 10px rgba(0,0,0,0.3);
+  transition: 300ms ease-in-out;
+}
+
+.price-description {
+  padding: 30px;
+  display: flex;
+  align-items: center;
+}
+
+.description {
+  flex: 1;
+}
+
+.unit-price {
+  flex: 2;
+}
+
+.unit-price input {
+  float: right;
+  margin: 10px;
+}
+
+.add-item {
+  color: white;
+  float: right;
+  cursor: pointer;
+  font-weight: 700;
+  font-family: Helvetica,"sans-serif";
+  transition: all .2s;
+  padding: 10px 20px;
+  border-radius: 100px;
+  background: #036264;
+  border: 1px solid transparent;
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+}
+
+.add-item:hover {
+  background: #036264;
+}
+
+.add-item > svg {
+  width: 34px;
+  margin-left: 10px;
+  transition: transform .3s ease-in-out;
+}
+
+.add-item:hover svg {
+  transform: translateX(5px);
+}
+
+.add-item:active {
+  transform: scale(0.95);
+}
+
+
