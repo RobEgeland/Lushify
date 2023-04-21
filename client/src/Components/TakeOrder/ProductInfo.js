@@ -14,7 +14,9 @@ const ProductInfo = ({description, setDescription, price, setPrice, quantity, se
                         <textarea value={description} onChange={(e) => setDescription(e.target.value)} spellCheck={true} class="input" placeholder='Description' rows="5" cols="100"/>
                     </div>
                     <div className='unit-price'>
+                        <label className='quant'>Quantity:</label>
                         <input value={quantity} onChange={(e) => setQuantity(e.target.value)} required="" placeholder="Quantity" type="text" class="product-input"/>
+                        <label className='price'>Price:</label>
                         <input value={price} onChange={(e) => setPrice(e.target.value)} required="" placeholder="Price" type="text" class="product-input"/>
                     </div>
                 </div>

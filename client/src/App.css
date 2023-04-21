@@ -389,11 +389,26 @@ table {
 
 .unit-price {
   flex: 2;
+  display: flex;
 }
 
 .unit-price input {
   float: right;
-  margin: 10px;
+  margin-left: 20px;
+}
+
+.price {
+  float: left;
+  margin-left: 100px;
+  margin-top: 5px;
+}
+
+.quant {
+  position: relative;
+  z-index: 9;
+  float: right;
+  margin-left: 40px;
+  margin-top: 5px;
 }
 
 .add-item {
