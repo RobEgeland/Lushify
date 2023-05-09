@@ -282,7 +282,7 @@ html {
   justify-content: space-between;
 
 }
-table {
+.customer-table {
   margin: auto;
 }
 
@@ -458,12 +458,41 @@ table {
   display: inline-block;
 }
 
+.product-card {
+  height: 100%;
+  width: 100%;
+}
+
 .order-total hr {
   margin: 10px;
 }
 
-.desc-card {
-  float: left;
+.product-table {
+  width: 100%;
 }
 
+.desc-card {
+  float: left;
 
+}
+.price-card {
+  display: inline-block;
+}
+.quant-card {
+  float: right;
+
+}
+
+.price-title {
+  display: inline-block;
+}
+
+.product-title {
+  float: left;
+  margin-left: 20px;
+}
+
+.quantity-title {
+  float: right;
+  margin-right: 20px;
+}

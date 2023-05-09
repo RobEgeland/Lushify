@@ -5,7 +5,7 @@ import ProductInfo from './ProductInfo'
 import OrderTotal from './OrderTotal'
 
 const TakeOrder = () => {
-  const [delivOrPickup, setDelivOrPickup] = useState(false)  //false = delivery
+  const [delivOrPickup, setDelivOrPickup] = useState(true)  //false = delivery
   const [description, setDescription] = useState("")
   const [price, setPrice] = useState(0)
   const [quantity, setQuantity] = useState(0)
@@ -36,11 +36,11 @@ const TakeOrder = () => {
         <div className='radio-parent'> 
           <div class="radio-inputs">
             <label class="radio">
-              <input type="radio" name="radio" checked/>
+              <input type="radio" name="radio"/>
               <span onClick={() => setDelivOrPickup(false)} class="name">Delivery</span>
             </label>
             <label class="radio">
-              <input type="radio" name="radio"/>
+              <input type="radio" name="radio" checked/>
               <span onClick={() => setDelivOrPickup(true)} class="name">Pickup</span>
             </label>
           </div>

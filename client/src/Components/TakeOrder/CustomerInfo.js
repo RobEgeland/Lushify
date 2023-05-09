@@ -10,7 +10,7 @@ const NewPickupForm = () => {
           </div>
           <div className='inputs-parent'>
             
-            <table cellSpacing={"50px"}>
+            <table className='customer-table' cellSpacing={"50px"}>
               <tr>
                 {/* <td></td> */}
                 <td><input required="" placeholder="Search Customer" type="text" class="customer-search"/></td>

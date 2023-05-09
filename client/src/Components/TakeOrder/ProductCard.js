@@ -3,7 +3,7 @@ import React from 'react'
 const ProductCard = ({description, price, quantity}) => {
   return (
     <div>
-        <table cellSpacing={"10px"}>
+        <table className='product-table' cellSpacing={"15px"}>
             <tr>
                 <td className='desc-card'>{description}</td>
                 <td className='price-card'>{price}</td>
