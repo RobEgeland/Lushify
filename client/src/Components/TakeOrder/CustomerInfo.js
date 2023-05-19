@@ -1,6 +1,6 @@
 import React from 'react'
 
-const NewPickupForm = () => {
+const CustomerInfo = () => {
   return (
     <div>
       <form>
@@ -92,4 +92,4 @@ const NewPickupForm = () => {
   )
 }
 
-export default NewPickupForm
+export default CustomerInfo

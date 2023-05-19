@@ -1,8 +1,9 @@
 import React, {useEffect, useState} from 'react'
-import NewPickupForm from './CustomerInfo'
+import CustomerInfo from './CustomerInfo'
 import CardMessage from './CardMessage'
 import ProductInfo from './ProductInfo'
 import OrderTotal from './OrderTotal'
+import RecipientInfo from './RecipientInfo'
 
 const TakeOrder = () => {
   const [delivOrPickup, setDelivOrPickup] = useState(true)  //false = delivery
@@ -14,6 +15,8 @@ const TakeOrder = () => {
   const [subTotal, setSubTotal] = useState(0.00)
   const [deliveryCharge, setDeliveryCharge] = useState(0.00)
   const [grandTotal, setGrandTotal] = useState(0.00)
+
+  const [amDelivery, setAmDelivery] = useState(false);
 
   function handleAddNewProduct(e) {
     e.preventDefault()
@@ -62,7 +65,8 @@ const TakeOrder = () => {
         </div>
       </div>
 
-      <NewPickupForm />
+      <CustomerInfo />
+      {delivOrPickup ? null : <RecipientInfo amDelivery={amDelivery} setAmDelivery={setAmDelivery} />}
       <br></br>
       <CardMessage />
       <br></br>
