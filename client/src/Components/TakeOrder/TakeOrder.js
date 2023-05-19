@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import NewPickupForm from './CustomerInfo'
 import CardMessage from './CardMessage'
 import ProductInfo from './ProductInfo'
@@ -10,6 +10,10 @@ const TakeOrder = () => {
   const [price, setPrice] = useState(0)
   const [quantity, setQuantity] = useState(0)
   const [products, setProducts] = useState([])
+
+  const [subTotal, setSubTotal] = useState(0.00)
+  const [deliveryCharge, setDeliveryCharge] = useState(0.00)
+  const [grandTotal, setGrandTotal] = useState(0.00)
 
   function handleAddNewProduct(e) {
     e.preventDefault()
@@ -25,6 +29,17 @@ const TakeOrder = () => {
     setPrice(0)
     setQuantity(0)
   }
+
+
+  useEffect(() => {
+    let currentTotal = 0;
+    products.forEach(function (product) {
+      currentTotal += product.price * product.quantity
+    })
+    setSubTotal(currentTotal.toFixed(2))
+    let finalTotal = currentTotal + parseInt(deliveryCharge)
+    setGrandTotal(finalTotal.toFixed(2))
+  }, [products])
 
 
   return (
@@ -61,7 +76,7 @@ const TakeOrder = () => {
       handleAddNewProduct={handleAddNewProduct}
       />
       <br></br>
-      <OrderTotal products={products} />
+      <OrderTotal deliveryCharge={deliveryCharge} grandTotal={grandTotal} setDeliveryCharge={setDeliveryCharge} delivOrPickup={delivOrPickup} subTotal={subTotal} products={products} />
     </div>
   )
 }

@@ -496,3 +496,40 @@ html {
   float: right;
   margin-right: 20px;
 }
+
+/* total calculator */
+
+.total-price {
+  height: fit-content;
+  width: 20%;
+  float: right;
+  display: block;
+}
+
+.sub-total, .delivery-charge, .grand-total {
+  width: max-content;
+  display: inline-flex;
+  float: right;
+}
+
+.sub-total > h3, .grand-total > h3 {
+  margin-right: 30px;
+}
+
+
+
+.sub-total > p, .delivery-charge > p, .grand-total > p {
+  float: right;
+  margin-top: 20px;
+  margin-right: 0;
+  margin-left: 10px;
+}
+
+.delivery-charge-input {
+  margin-top: 20px;
+  margin-right: 20px;
+  width: 50px;
+  height: 20px;
+}
+
+

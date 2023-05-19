@@ -1,7 +1,7 @@
 import React from 'react'
 import ProductCard from './ProductCard'
 
-const OrderTotal = ({products}) => {
+const OrderTotal = ({products, subTotal, delivOrPickup, setDeliveryCharge, grandTotal, deliveryCharge}) => {
   return (
     <div className='order-total'>
         <div className='step-title'>
@@ -18,6 +18,22 @@ const OrderTotal = ({products}) => {
                 {products.map((product) => <ProductCard description={product.description} price={product.price} quantity={product.quantity}/>)}
             </div>
             <hr></hr>
+        </div>
+        <div className='total-price'>
+          <div className='sub-total'>
+            <h3>Subtotal</h3>
+            <p>{subTotal}</p>
+          </div>
+          { delivOrPickup ? null : <div className='delivery-charge'>
+            <h3>Delivery Charge</h3>
+            <input onChange={(e) => setDeliveryCharge(e.target.value)} className='delivery-charge-input'></input>
+            <p>{deliveryCharge}</p>
+          </div>}
+          {/* need to add tax */}
+          <div className='grand-total'>
+          <h3>Grand Total</h3>
+          <p>{grandTotal}</p>
+          </div>
         </div>
     </div>
   )
