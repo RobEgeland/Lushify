@@ -8,6 +8,7 @@ import RecipientInfo from './RecipientInfo'
 const TakeOrder = () => {
   const [delivOrPickup, setDelivOrPickup] = useState(true)  //false = delivery
   const [description, setDescription] = useState("")
+
   const [price, setPrice] = useState(0)
   const [quantity, setQuantity] = useState(0)
   const [products, setProducts] = useState([])
@@ -16,7 +17,16 @@ const TakeOrder = () => {
   const [deliveryCharge, setDeliveryCharge] = useState(0.00)
   const [grandTotal, setGrandTotal] = useState(0.00)
 
-  const [amDelivery, setAmDelivery] = useState(false);
+  const [amDelivery, setAmDelivery] = useState(false)
+  const [recipientsFirstName, setRecipientsFirstName] = useState("")
+  const [recipientsLastName, setRecipientsLastName] = useState("")
+  const [recipientsAddressType, setRecipientsAddressType] = useState("")
+  const [recipientsCompany, setRecipientsCompany] = useState("")
+  const [recipientsAddress, setRecipientsAddress] = useState("")
+  const [recipientsCity, setRecipientsCity] = useState("")
+  const [recipientsState, setRecipientsState] = useState("")
+  const [recipientsPostalCode, setRecipientsPostalCode] = useState("")
+  const [recipientsPhone, setRecipientsPhone] = useState("")
 
   function handleAddNewProduct(e) {
     e.preventDefault()
@@ -54,19 +64,38 @@ const TakeOrder = () => {
         <div className='radio-parent'> 
           <div class="radio-inputs">
             <label class="radio">
-              <input type="radio" name="radio"/>
-              <span onClick={() => setDelivOrPickup(false)} class="name">Delivery</span>
+              <input onClick={() => setDelivOrPickup(false)} type="radio" name="radio"/>
+              <span  class="name">Delivery</span>
             </label>
             <label class="radio">
-              <input type="radio" name="radio" checked/>
-              <span onClick={() => setDelivOrPickup(true)} class="name">Pickup</span>
+              <input onClick={() => setDelivOrPickup(true)} type="radio" name="radio" checked/>
+              <span  class="name">Pickup</span>
             </label>
           </div>
         </div>
       </div>
 
       <CustomerInfo />
-      {delivOrPickup ? null : <RecipientInfo amDelivery={amDelivery} setAmDelivery={setAmDelivery} />}
+      {delivOrPickup ? null : <RecipientInfo
+        amDelivery={amDelivery} 
+        setAmDelivery={setAmDelivery}
+        recipientsFirstName={recipientsFirstName}
+        setRecipientsFirstName={setRecipientsFirstName}
+        recipientsLastName={recipientsLastName}
+        setRecipientsLastName={setRecipientsLastName}
+        setRecipientsAddressType={setRecipientsAddressType}
+        recipientsCompany={recipientsCompany}
+        setRecipientsCompany={setRecipientsCompany}
+        recipientsAddress={recipientsAddress}
+        setRecipientsAddress={setRecipientsAddress}
+        recipientsCity={recipientsCity}
+        setRecipientsCity={setRecipientsCity}
+        setRecipientsState={setRecipientsState}
+        recipientsPostalCode={recipientsPostalCode}
+        setRecipientsPostalCode={setRecipientsPostalCode}
+        recipientsPhone={recipientsPhone}
+        setRecipientsPhone={setRecipientsPhone}
+      />}
       <br></br>
       <CardMessage />
       <br></br>
