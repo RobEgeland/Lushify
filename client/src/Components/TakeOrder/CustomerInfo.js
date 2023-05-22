@@ -1,6 +1,24 @@
 import React from 'react'
 
-const NewPickupForm = () => {
+const CustomerInfo = ({
+  customerFirstName,
+  setCustomerFirstName,
+  customerLastName,
+  setCustomerLastName,
+  customerEmail,
+  setCustomerEmail,
+  customerCompany,
+  setCustomerCompany,
+  customerAddress,
+  setCustomerAddress,
+  customerCity,
+  setCustomerCity,
+  setCustomerState,
+  customerPostalCode,
+  setCustomerPostalCode,
+  customerPhone,
+  setCustomerPhone
+}) => {
   return (
     <div>
       <form>
@@ -17,18 +35,18 @@ const NewPickupForm = () => {
                 
               </tr>
               <tr>
-                <td><input required="" placeholder="First Name" type="text" class="input"/></td>
-                <td><input required="" placeholder="Last Name" type="text" class="input"/></td>
-                <td><input required="" placeholder="Email" type="text" class="input"/></td>
+                <td><input value={customerFirstName} onChange={(e) => setCustomerFirstName(e.target.value)} required="" placeholder="First Name" type="text" class="input"/></td>
+                <td><input value={customerLastName} onChange={(e) => setCustomerLastName(e.target.value)} required="" placeholder="Last Name" type="text" class="input"/></td>
+                <td><input value={customerEmail} onChange={(e) => setCustomerEmail(e.target.value)} required="" placeholder="Email" type="text" class="input"/></td>
               </tr>
               <tr>
-                <td><input required="" placeholder="Company" type="text" class="input"/></td>
-                <td><input required="" placeholder="Address" type="text" class="input"/></td>
-                <td><input required="" placeholder="City" type="text" class="input"/></td>
+                <td><input value={customerCompany} onChange={(e) => setCustomerCompany(e.target.value)} required="" placeholder="Company" type="text" class="input"/></td>
+                <td><input value={customerAddress} onChange={(e) => setCustomerAddress(e.target.value)} required="" placeholder="Address" type="text" class="input"/></td>
+                <td><input value={customerCity} onChange={(e) => setCustomerCity(e.target.value)} required="" placeholder="City" type="text" class="input"/></td>
               </tr>
               <tr>
 
-                <td><select class="input">
+                <td><select onChange={(e) => setCustomerState(e.target.value)} class="input">
                   <option value="AL">Alabama</option>
                   <option value="AK">Alaska</option>
                   <option value="AZ">Arizona</option>
@@ -81,8 +99,8 @@ const NewPickupForm = () => {
                   <option value="WI">Wisconsin</option>
                   <option value="WY">Wyoming</option>
                 </select></td>
-                <td><input required="" placeholder="Postal Code" type="text" class="input"/></td>
-                <td><input required="" placeholder="Phone" type="text" class="input"/></td>
+                <td><input value={customerPostalCode} onChange={(e) => setCustomerPostalCode(e.target.value)} required="" placeholder="Postal Code" type="text" class="input"/></td>
+                <td><input value={customerPhone} onChange={(e) => setCustomerPhone(e.target.value)} required="" placeholder="Phone" type="text" class="input"/></td>
               </tr>
             </table>
           </div>
@@ -92,4 +110,4 @@ const NewPickupForm = () => {
   )
 }
 
-export default NewPickupForm
+export default CustomerInfo
