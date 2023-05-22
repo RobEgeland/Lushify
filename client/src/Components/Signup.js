@@ -6,8 +6,11 @@ const Signup = () => {
     const {setLoggedIn, setCurrentUser} = useContext(UserContext)
     const [errors, setErrors] = useState()
     const [newUser, setNewUser] = useState({
-        name: "",
+        business_name: "",
         email: "",
+        city: "",
+        state: "",
+        postal_code: "",
         password: "",
         password_confirmation: ""
     })
@@ -57,11 +60,23 @@ const Signup = () => {
             <h1>Sign Up</h1>
             <label>Business Name</label>
             <br/>
-            <input className='input' name="name" value={newUser.name} onChange={handleSignUpChange}></input>
+            <input className='input' name="business_name" value={newUser.business_name} onChange={handleSignUpChange}></input>
             <br/>
             <label>Email</label>
             <br/>
             <input className='input' name="email" value={newUser.email} onChange={handleSignUpChange}></input>
+            <br/>
+            <label>City</label>
+            <br/>
+            <input className='input' name="city" value={newUser.city} onChange={handleSignUpChange}></input>
+            <br/>
+            <label>State</label>
+            <br/>
+            <input className='input' name="state" value={newUser.state} onChange={handleSignUpChange}></input>
+            <br/>
+            <label>Postal Code</label>
+            <br/>
+            <input className='input' name="postal_code" value={newUser.postal_code} onChange={handleSignUpChange}></input>
             <br/>
             <label>Password</label>
             <br/>
