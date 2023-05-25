@@ -6,6 +6,8 @@ import OrderTotal from './OrderTotal'
 import RecipientInfo from './RecipientInfo'
 
 const TakeOrder = () => {
+  const [errors, setErrors] = useState()
+
   const [delivOrPickup, setDelivOrPickup] = useState(true)  //false = delivery
   const [description, setDescription] = useState("")
 
@@ -49,6 +51,47 @@ const TakeOrder = () => {
 
   let today = new Date().toDateInputValue();
   const [orderDate, setOrderDate] = useState(today)
+
+  function handleOrderSubmit() {
+    const body = {
+      customer_first_name: customerFirstName,
+      customer_last_name: customerLastName,
+      customer_email: customerEmail,
+      customer_phone: customerPhone,
+      order_message: cardMessage,
+      order_date: orderDate,
+      products: products,
+      grand_total: grandTotal
+    }
+    const headers = {
+      "Accept": "application/json",
+      "Content-Type": "application/json"
+    }
+    const options = {
+      method: "POST",
+      headers,
+      body: JSON.stringify(body)
+    }
+    fetch('/pickups', options)
+    .then(res => {
+      console.log(res)
+      if(res.ok) {
+        res.json().then(data => {
+            console.log(data)
+        })
+      }else {
+        res.json().then(error => {
+            console.log(error.errors)
+            const errorAr = []
+            for (const element in error.errors) {
+                errorAr.push(` ${element} ${error.errors[element]} -`)
+            }
+            setErrors(errorAr)
+            throw new Error(errors)
+        })
+    }
+    })
+  }
 
   function handleAddNewProduct(e) {
     e.preventDefault()
@@ -155,6 +198,8 @@ const TakeOrder = () => {
       />
       <br></br>
       <OrderTotal deliveryCharge={deliveryCharge} grandTotal={grandTotal} setDeliveryCharge={setDeliveryCharge} delivOrPickup={delivOrPickup} subTotal={subTotal} products={products} />
+      <br></br>
+      <button onClick={handleOrderSubmit} class="button">Add Order</button>
     </div>
   )
 }

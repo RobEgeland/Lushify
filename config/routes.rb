@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get '/current-user', to: 'users#get_current_user'
 
   resources :users, only: [:create]
+  resources :pickups
   # Defines the root path route ("/")
   # root "articles#index"
 end
