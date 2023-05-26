@@ -139,7 +139,7 @@ const TakeOrder = () => {
     setSubTotal(currentTotal.toFixed(2))
     let finalTotal = currentTotal + parseInt(deliveryCharge)
     setGrandTotal(finalTotal.toFixed(2))
-  }, [products])
+  }, [products, deliveryCharge])
 
 
   return (
