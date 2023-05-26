@@ -10,9 +10,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_24_215549) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_26_202002) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "deliveries", force: :cascade do |t|
+    t.string "customer_first_name"
+    t.string "customer_last_name"
+    t.string "customer_email"
+    t.string "customer_phone"
+    t.text "order_message"
+    t.date "order_date"
+    t.float "grand_total"
+    t.boolean "am_delivery"
+    t.string "recipient_first_name"
+    t.string "recipient_last_name"
+    t.string "recipient_phone"
+    t.string "address_type"
+    t.string "company_name"
+    t.string "address"
+    t.string "city"
+    t.string "state"
+    t.integer "postal_code"
+    t.float "delivery_charge"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "delivery_products", force: :cascade do |t|
+    t.integer "delivery_id"
+    t.string "description"
+    t.float "price"
+    t.integer "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "pickups", force: :cascade do |t|
     t.string "customer_first_name"

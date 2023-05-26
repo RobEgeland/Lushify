@@ -53,7 +53,8 @@ const TakeOrder = () => {
   const [orderDate, setOrderDate] = useState(today)
 
   function handleOrderSubmit() {
-    const body = {
+    const url = delivOrPickup ? '/pickups' : '/deliveries'
+    const body = delivOrPickup ? {
       customer_first_name: customerFirstName,
       customer_last_name: customerLastName,
       customer_email: customerEmail,
@@ -62,7 +63,28 @@ const TakeOrder = () => {
       order_date: orderDate,
       products: products,
       grand_total: grandTotal
+    } : {
+      customer_first_name: customerFirstName,
+      customer_last_name: customerLastName,
+      customer_email: customerEmail,
+      customer_phone: customerPhone,
+      order_message: cardMessage,
+      order_date: orderDate,
+      products: products,
+      grand_total: grandTotal,
+      am_delivery: amDelivery,
+      recipients_first_name: recipientsFirstName,
+      recipient_last_name: recipientsLastName,
+      recipient_phone: recipientsPhone,
+      address_type: recipientsAddressType,
+      company_name: recipientsCompany,
+      address: recipientsAddress,
+      city: recipientsCity,
+      state: recipientsState,
+      postal_code: recipientsPostalCode,
+      delivery_charge: deliveryCharge
     }
+    
     const headers = {
       "Accept": "application/json",
       "Content-Type": "application/json"
@@ -72,7 +94,7 @@ const TakeOrder = () => {
       headers,
       body: JSON.stringify(body)
     }
-    fetch('/pickups', options)
+    fetch(url, options)
     .then(res => {
       console.log(res)
       if(res.ok) {

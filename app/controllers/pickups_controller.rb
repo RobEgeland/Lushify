@@ -3,7 +3,7 @@ class PickupsController < ApplicationController
 
     def index
         pickups = Pickup.all
-        render json: pickups, status: :ok
+        render json: pickups, include: :products, status: :ok
     end
 
     def show
@@ -14,7 +14,6 @@ class PickupsController < ApplicationController
 
     def create 
         pickup = Pickup.create!(pickup_params)
-        puts pickup
         params[:products].each do |product|
             puts pickup.id
             Product.create!(description: product[:description], price: product[:price], quantity: product[:quantity], pickup_id: pickup.id)
