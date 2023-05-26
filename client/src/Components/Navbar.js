@@ -12,6 +12,7 @@ const Navbar = ({handlePopupChange}) => {
                 <div className='navbar'>
                     <span className='logo'>Lushify</span>
                     <div className='nav-items-main'>
+                    <a><NavLink to={"/orders"}>Orders</NavLink></a>
                     <a><NavLink to={"/take-order"}>Take Order</NavLink></a>
                     </div>
                     <a><NavLink onClick={handlePopupChange} to={"/take-order"}>Log Out</NavLink></a>

@@ -8,6 +8,7 @@ import Signup from './Components/Signup';
 import LogIn from './Components/LogIn';
 import TakeOrder from './Components/TakeOrder/TakeOrder';
 import LogOutPopup from './Components/LogOutPopup';
+import Orders from './Components/Orders/Orders';
 
 function App() {
   const [currentUser, setCurrentUser] = useState()
@@ -60,6 +61,7 @@ function App() {
             <Route path="/signup" element={<Signup />}/>
             <Route path="/login" element={<LogIn />}/>
             <Route path="/take-order" element={<TakeOrder />}/>
+            <Route path="/orders" element={<Orders currentUser={currentUser} />}/>
           </Routes>
         </UserContext.Provider>
         { popupIsOpen ? <LogOutPopup handleLogOut={handleLogOut} handlePopupChange={handlePopupChange} /> : null}

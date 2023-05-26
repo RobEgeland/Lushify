@@ -18,7 +18,7 @@ class UsersController < ApplicationController
     private 
 
     def user_params
-        params.permit(:business_name, :email, :password, :password_confirmation)
+        params.permit(:business_name, :email, :password, :password_confirmation, :city, :state, :postal_code)
     end
 
     def render_invalid(invalid) 
