@@ -5,6 +5,8 @@ import { useContext } from 'react'
 import { UserContext } from '../../Context/UserContext'
 
 const Orders = () => {
+    const [deliveries, setDeliveries] = useState([])
+    const [pickUps, setPickUps] = useState([])
     const [currentCondition, setCurrentCondition] = useState()
     const [temp, setTemp] = useState()
     const [feelsLike, setFeelsLike] = useState()
@@ -19,7 +21,7 @@ const Orders = () => {
 	}
 };
     useEffect(() => {
-        fetch(url, options)
+        fetch( url, options)
         .then(res => res.json())
         .then(data => {
             console.log(data)
@@ -30,6 +32,15 @@ const Orders = () => {
         })
     },[currentUser])
 
+    useEffect(() => {
+        fetch('/deliveries')
+        .then (res => res.json())
+        .then(data =>setDeliveries(data))
+        fetch('/pickups')
+        .then (res => res.json())
+        .then(data => setPickUps(data))
+    }, [])
+
     
   return (
     <div>
@@ -37,10 +48,10 @@ const Orders = () => {
             <div style={{float: "left", marginLeft: "150px", marginTop: "15px"}}>{currentCondition}</div>
             <div style={{float: "left", marginLeft: "150px", marginTop: "15px"}}>{temp}℉</div>
             <div style={{float: "right", marginRight: "100px", marginTop: "15px"}}>Feels Like: {feelsLike}℉</div>
-            <div style={{float: "right", marginRight: "130px", marginTop: "15px"}}>{wind}</div>
+            <div style={{float: "right", marginRight: "130px", marginTop: "15px"}}>Wind: {wind}mph</div>
         </div>
-        <Deliveries />
-        <Pickups />
+        <Deliveries deliveries={deliveries} />
+        <Pickups pickUps={pickUps}/>
     </div>
   )
 }
