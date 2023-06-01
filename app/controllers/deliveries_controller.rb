@@ -9,6 +9,11 @@ class DeliveriesController < ApplicationController
         render json: delivery, include: :delivery_products, status: :created
     end
 
+    def index 
+        deliveries = Delivery.all
+        render json: deliveries, include: :delivery_products, status: :ok
+    end
+
 
     private
 
