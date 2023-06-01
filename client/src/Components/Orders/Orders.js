@@ -12,7 +12,7 @@ const Orders = () => {
     const [feelsLike, setFeelsLike] = useState()
     const [wind, setWind] = useState()
     const {currentUser} = useContext(UserContext)
-    const url = `https://weatherapi-com.p.rapidapi.com/current.json?q=${currentUser.postal_code}`;
+    const url = currentUser ? `https://weatherapi-com.p.rapidapi.com/current.json?q=${currentUser.postal_code}` : null
     const options = {
 	method: 'GET',
 	headers: {
@@ -21,15 +21,17 @@ const Orders = () => {
 	}
 };
     useEffect(() => {
-        fetch( url, options)
-        .then(res => res.json())
-        .then(data => {
+        if (currentUser) {
+            fetch( url, options)
+            .then(res => res.json())
+            .then(data => {
             console.log(data)
             setCurrentCondition(data.current.condition.text)
             setTemp(data.current.temp_f)
             setFeelsLike(data.current.feelslike_f)
             setWind(data.current.wind_mph)
-        })
+            })
+        }
     },[currentUser])
 
     useEffect(() => {
