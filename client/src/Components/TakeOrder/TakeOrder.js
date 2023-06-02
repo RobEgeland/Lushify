@@ -73,7 +73,7 @@ const TakeOrder = () => {
       products: products,
       grand_total: grandTotal,
       am_delivery: amDelivery,
-      recipients_first_name: recipientsFirstName,
+      recipient_first_name: recipientsFirstName,
       recipient_last_name: recipientsLastName,
       recipient_phone: recipientsPhone,
       address_type: recipientsAddressType,

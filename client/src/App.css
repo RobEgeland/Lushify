@@ -698,3 +698,78 @@ html {
   background-color: white;
 }
 
+.delivery-info {
+  padding: 10px;
+  margin: auto;
+  margin-top: 60px;
+  height: fit-content;
+  width: 80%;
+  border-radius: 25px;
+  background-color: white;
+}
+
+.delivery-info > h2 {
+  float: left;
+  padding-left: 10px;
+  margin: 5px;
+}
+
+.delivery-list {
+  margin-top: 15px;
+}
+
+.delivery-card {
+  border-style: solid;
+  border-radius: 25px;
+  display: flex;
+}
+
+.delivery-card > h4 {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.clear {
+  clear: both;
+}
+
+.checkBox {
+  margin-top: 17px;
+  margin-left: 10px;
+  display: block;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255, 255, 255, 0);
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0px 0px 0px 2px black;
+}
+
+.checkBox div {
+  width: 60px;
+  height: 60px;
+  background-color: black;
+  top: -52px;
+  left: -52px;
+  position: absolute;
+  transform: rotateZ(45deg);
+  z-index: 100;
+}
+
+.checkBox input[type=checkbox]:checked + div {
+  left: -10px;
+  top: -10px;
+}
+
+.checkBox input[type=checkbox] {
+  position: absolute;
+  left: 50px;
+  visibility: hidden;
+}
+
+.transition {
+  transition: 300ms ease;
+}
+
