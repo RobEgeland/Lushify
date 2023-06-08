@@ -1,11 +1,13 @@
 import React, {useEffect, useState} from 'react'
 import Deliveries from './Deliveries'
 import Pickups from './Pickups'
+import RouteCard from './RouteCard'
 import { useContext } from 'react'
 import { UserContext } from '../../Context/UserContext'
 
 const Orders = () => {
     const [deliveries, setDeliveries] = useState([])
+    const [selectedDeliveries, setSelectedDeliveries] = useState([])
     const [pickUps, setPickUps] = useState([])
     const [currentCondition, setCurrentCondition] = useState()
     const [temp, setTemp] = useState()
@@ -14,25 +16,28 @@ const Orders = () => {
     const {currentUser} = useContext(UserContext)
     const url = currentUser ? `https://weatherapi-com.p.rapidapi.com/current.json?q=${currentUser.postal_code}` : null
     const options = {
-	method: 'GET',
-	headers: {
+	    method: 'GET',
+        // need to hide this
+	    headers: {
 		'X-RapidAPI-Key': '2ae9a5ab10msh543f324a932dd06p11fec0jsn2f08bf09f607',
 		'X-RapidAPI-Host': 'weatherapi-com.p.rapidapi.com'
-	}
-};
-    useEffect(() => {
-        if (currentUser) {
-            fetch( url, options)
-            .then(res => res.json())
-            .then(data => {
-            console.log(data)
-            setCurrentCondition(data.current.condition.text)
-            setTemp(data.current.temp_f)
-            setFeelsLike(data.current.feelslike_f)
-            setWind(data.current.wind_mph)
-            })
-        }
-    },[currentUser])
+	    }
+    };
+    const [routeList, setRouteList] = useState([])
+    const [routeNumber, setRouteNumber] = useState(1);
+    // useEffect(() => {
+    //     if (currentUser) {
+    //         fetch( url, options)
+    //         .then(res => res.json())
+    //         .then(data => {
+    //         console.log(data)
+    //         setCurrentCondition(data.current.condition.text)
+    //         setTemp(data.current.temp_f)
+    //         setFeelsLike(data.current.feelslike_f)
+    //         setWind(data.current.wind_mph)
+    //         })
+    //     }
+    // },[currentUser])
 
     useEffect(() => {
         fetch('/deliveries')
@@ -43,6 +48,17 @@ const Orders = () => {
         .then(data => setPickUps(data))
     }, [])
 
+    function handleRouteCreation() {
+        console.log("ran")
+        setRouteList(current => [...current, <RouteCard routeNumber={routeNumber} selectedDeliveries={selectedDeliveries} />])
+        let deliveryids = [];
+        selectedDeliveries.map(del => deliveryids.push(del.id))
+        let updatedDeliveries = deliveries.filter(del => !deliveryids.includes(del.id))
+        setDeliveries(updatedDeliveries);
+        setSelectedDeliveries([])
+        setRouteNumber(routeNumber + 1)
+    }
+
     
   return (
     <div>
@@ -52,8 +68,9 @@ const Orders = () => {
             <div style={{float: "right", marginRight: "100px", marginTop: "15px"}}>Feels Like: {feelsLike}℉</div>
             <div style={{float: "right", marginRight: "130px", marginTop: "15px"}}>Wind: {wind}mph</div>
         </div>
-        <Deliveries deliveries={deliveries} />
+        <Deliveries handleRouteCreation={handleRouteCreation} selectedDeliveries={selectedDeliveries} setSelectedDeliveries={setSelectedDeliveries} deliveries={deliveries} />
         <Pickups pickUps={pickUps}/>
+        {routeList}
     </div>
   )
 }
