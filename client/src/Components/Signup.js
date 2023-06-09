@@ -1,10 +1,12 @@
 import React, {useState} from 'react'
 import { useContext } from 'react'
 import { UserContext } from '../Context/UserContext'
+import { useNavigate } from 'react-router-dom'
 
 const Signup = () => {
     const {setLoggedIn, setCurrentUser} = useContext(UserContext)
     const [errors, setErrors] = useState()
+    const navigate = useNavigate()
     const [newUser, setNewUser] = useState({
         business_name: "",
         email: "",
@@ -40,6 +42,7 @@ const Signup = () => {
                 res.json().then(data => {
                     setCurrentUser(data)
                     setLoggedIn(true)
+                    navigate("/take-order")
                 })
             }else {
                 res.json().then(error => {

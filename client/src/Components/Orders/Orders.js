@@ -25,19 +25,19 @@ const Orders = () => {
     };
     const [routeList, setRouteList] = useState([])
     const [routeNumber, setRouteNumber] = useState(1);
-    // useEffect(() => {
-    //     if (currentUser) {
-    //         fetch( url, options)
-    //         .then(res => res.json())
-    //         .then(data => {
-    //         console.log(data)
-    //         setCurrentCondition(data.current.condition.text)
-    //         setTemp(data.current.temp_f)
-    //         setFeelsLike(data.current.feelslike_f)
-    //         setWind(data.current.wind_mph)
-    //         })
-    //     }
-    // },[currentUser])
+    useEffect(() => {
+        if (currentUser) {
+            fetch( url, options)
+            .then(res => res.json())
+            .then(data => {
+            console.log(data)
+            setCurrentCondition(data.current.condition.text)
+            setTemp(data.current.temp_f)
+            setFeelsLike(data.current.feelslike_f)
+            setWind(data.current.wind_mph)
+            })
+        }
+    },[currentUser])
 
     useEffect(() => {
         fetch('/deliveries')
@@ -49,7 +49,6 @@ const Orders = () => {
     }, [])
 
     function handleRouteCreation() {
-        console.log("ran")
         setRouteList(current => [...current, <RouteCard routeNumber={routeNumber} selectedDeliveries={selectedDeliveries} />])
         let deliveryids = [];
         selectedDeliveries.map(del => deliveryids.push(del.id))

@@ -1,11 +1,15 @@
 import React, {useEffect, useState} from 'react'
 import RoutedDeliveryCard from './RoutedDeliveryCard'
+import MapCard from './MapCard'
+
 
 const RouteCard = ({selectedDeliveries, routeNumber}) => {
     const [deliveryList, setDeliveryList] = useState([])
     const [amDeliveryList, setAmDeliveryList] = useState([])
+    const [mapOn, setMapOn] = useState(false);
     let deliveries;
     let amDeliveries;
+
     useEffect(() => {
         setAmDeliveryList([])
         setDeliveryList([])
@@ -18,7 +22,7 @@ const RouteCard = ({selectedDeliveries, routeNumber}) => {
                 }
             });
         }
-    }, [selectedDeliveries]);
+    }, []);
 
     if (deliveryList.length > 0) {
         deliveries = deliveryList.map(delivery => (
@@ -50,9 +54,15 @@ const RouteCard = ({selectedDeliveries, routeNumber}) => {
             />
     ))}
     
+
+    
     return (
         <div className='delivery-info'>
+            {mapOn ? <MapCard mapOn={mapOn} deliveryList={deliveryList} amDeliveryList={amDeliveryList} /> : null}
             <h2>Route {routeNumber}</h2>   
+            <button onClick={() => setMapOn(true)} className='map-button'>
+                View Map
+            </button>
             <br></br>
             <div className='delivery-list'>
                 {amDeliveries}
