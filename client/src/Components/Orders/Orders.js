@@ -58,14 +58,26 @@ const Orders = () => {
         setRouteNumber(routeNumber + 1)
     }
 
+    Date.prototype.toDateInputValue = (function() {
+        let local = new Date(this);
+        local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
+        return local.toJSON().slice(0,10);
+      });
+    
+      let today = new Date().toDateInputValue();
+      const [orderDate, setOrderDate] = useState(today)
+
     
   return (
     <div>
         <div className='weather'>
-            <div style={{float: "left", marginLeft: "150px", marginTop: "15px"}}>{currentCondition}</div>
-            <div style={{float: "left", marginLeft: "150px", marginTop: "15px"}}>{temp}℉</div>
+            <div style={{float: "left", marginLeft: "100px", marginTop: "15px"}}>{currentCondition}</div>
+            <div style={{float: "left", marginLeft: "100px", marginTop: "15px"}}>{temp}℉</div>
+            <div className='order-screen-date'>
+                <input class="input" type='date' value={orderDate} onChange={(e) => setOrderDate(e.target.value)} />
+            </div>
             <div style={{float: "right", marginRight: "100px", marginTop: "15px"}}>Feels Like: {feelsLike}℉</div>
-            <div style={{float: "right", marginRight: "130px", marginTop: "15px"}}>Wind: {wind}mph</div>
+            <div style={{float: "right", marginRight: "100px", marginTop: "15px"}}>Wind: {wind}mph</div>
         </div>
         <Deliveries handleRouteCreation={handleRouteCreation} selectedDeliveries={selectedDeliveries} setSelectedDeliveries={setSelectedDeliveries} deliveries={deliveries} />
         <Pickups pickUps={pickUps}/>
