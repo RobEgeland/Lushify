@@ -4,6 +4,7 @@ import CardMessage from './CardMessage'
 import ProductInfo from './ProductInfo'
 import OrderTotal from './OrderTotal'
 import RecipientInfo from './RecipientInfo'
+import Model from './Model'
 
 const TakeOrder = () => {
   const [errors, setErrors] = useState()
@@ -53,6 +54,9 @@ const TakeOrder = () => {
   const [orderDate, setOrderDate] = useState(today)
 
   function handleOrderSubmit() {
+    if(orderDate < today) {
+      setErrors("Order Date cannot be in the past")
+    }else {
     const url = delivOrPickup ? '/pickups' : '/deliveries'
     const body = delivOrPickup ? {
       customer_first_name: customerFirstName,
@@ -114,6 +118,7 @@ const TakeOrder = () => {
     }
     })
   }
+  }
 
   function handleAddNewProduct(e) {
     e.preventDefault()
@@ -144,6 +149,7 @@ const TakeOrder = () => {
 
   return (
     <div>
+      
       <div className='parent'>
         <div className='input'>
         <input type="text" autocomplete="on" name="text" class="input" placeholder="Employee"/>
@@ -219,6 +225,7 @@ const TakeOrder = () => {
       handleAddNewProduct={handleAddNewProduct}
       />
       <br></br>
+      <Model errors={errors} setErrors={setErrors} />
       <OrderTotal deliveryCharge={deliveryCharge} grandTotal={grandTotal} setDeliveryCharge={setDeliveryCharge} delivOrPickup={delivOrPickup} subTotal={subTotal} products={products} />
       <br></br>
       <button onClick={handleOrderSubmit} class="button">Add Order</button>

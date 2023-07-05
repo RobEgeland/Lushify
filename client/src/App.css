@@ -831,3 +831,24 @@ html {
   width: 50px;
   height: 50px;
 }
+
+.modelContainer {
+  margin: auto;
+  margin-bottom: 2px;
+  width: 50%;
+  height: 150px;
+  background-color: #d6d6d6;
+  box-shadow: #282c34;
+}
+
+.closeBtn {
+  float: right;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  padding-top: 35px;
+}
