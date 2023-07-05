@@ -688,7 +688,8 @@ html {
 /* Orders css */
 
 .weather {
-  display: inline-block;
+  display: flex;
+  justify-content: center;
   padding: 10px;
   margin: auto;
   margin-top: 60px;
@@ -831,6 +832,9 @@ html {
   width: 50px;
   height: 50px;
 }
+
+.order-screen-date {
+margin: auto;}
 
 .modelContainer {
   margin: auto;
