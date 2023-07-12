@@ -15,6 +15,14 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false)
   const [popupIsOpen, setPopupIsOpen] = useState(false)
 
+  Date.prototype.toDateInputValue = (function() {
+    let local = new Date(this);
+    local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
+    return local.toJSON().slice(0,10);
+  });
+
+  let today = new Date().toDateInputValue();
+
   function handlePopupChange() {
     setPopupIsOpen(!popupIsOpen)
   }
@@ -60,8 +68,8 @@ function App() {
           <Routes>
             <Route path="/signup" element={<Signup />}/>
             <Route path="/login" element={<LogIn />}/>
-            <Route path="/take-order" element={<TakeOrder />}/>
-            <Route path="/orders" element={<Orders currentUser={currentUser} />}/>
+            <Route path="/take-order" element={<TakeOrder today={today} />}/>
+            <Route path="/orders" element={<Orders today={today} currentUser={currentUser} />}/>
           </Routes>
         </UserContext.Provider>
         { popupIsOpen ? <LogOutPopup handleLogOut={handleLogOut} handlePopupChange={handlePopupChange} /> : null}

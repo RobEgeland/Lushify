@@ -21,6 +21,10 @@ class PickupsController < ApplicationController
         render json: pickup, include: :products, status: :created
     end
 
+    def get_by_date
+        render json: Pickup.where(order_date: params[:date] ), include: :products, status: :ok
+    end
+
 
     private 
 

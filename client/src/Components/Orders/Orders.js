@@ -5,7 +5,7 @@ import RouteCard from './RouteCard'
 import { useContext } from 'react'
 import { UserContext } from '../../Context/UserContext'
 
-const Orders = () => {
+const Orders = ({today}) => {
     const [deliveries, setDeliveries] = useState([])
     const [selectedDeliveries, setSelectedDeliveries] = useState([])
     const [pickUps, setPickUps] = useState([])
@@ -14,6 +14,7 @@ const Orders = () => {
     const [feelsLike, setFeelsLike] = useState()
     const [wind, setWind] = useState()
     const {currentUser} = useContext(UserContext)
+    const [orderDate, setOrderDate] = useState(today)
     const url = currentUser ? `https://weatherapi-com.p.rapidapi.com/current.json?q=${currentUser.postal_code}` : null
     const options = {
 	    method: 'GET',
@@ -38,15 +39,18 @@ const Orders = () => {
             })
         }
     },[currentUser])
-
+    
     useEffect(() => {
-        fetch('/deliveries')
+        fetch(`/deliveries/${orderDate}`)
         .then (res => res.json())
-        .then(data =>setDeliveries(data))
-        fetch('/pickups')
+        .then(data => setDeliveries(data))
+        fetch(`/pickups/${orderDate}`)
         .then (res => res.json())
-        .then(data => setPickUps(data))
-    }, [])
+        .then(data => {
+            console.log(data)
+            setPickUps(data)
+        })
+    }, [orderDate])
 
     function handleRouteCreation() {
         setRouteList(current => [...current, <RouteCard routeNumber={routeNumber} selectedDeliveries={selectedDeliveries} />])
@@ -58,14 +62,8 @@ const Orders = () => {
         setRouteNumber(routeNumber + 1)
     }
 
-    Date.prototype.toDateInputValue = (function() {
-        let local = new Date(this);
-        local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
-        return local.toJSON().slice(0,10);
-      });
+ 
     
-      let today = new Date().toDateInputValue();
-      const [orderDate, setOrderDate] = useState(today)
 
     
   return (

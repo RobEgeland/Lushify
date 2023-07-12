@@ -751,9 +751,12 @@ html {
   border-style: solid;
   border-radius: 25px;
   display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .delivery-card > h4 {
+  
   margin-left: 50px;
   margin-right: 50px;
 }

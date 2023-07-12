@@ -6,7 +6,7 @@ import OrderTotal from './OrderTotal'
 import RecipientInfo from './RecipientInfo'
 import Model from './Model'
 
-const TakeOrder = () => {
+const TakeOrder = ({today}) => {
   const [errors, setErrors] = useState()
 
   const [delivOrPickup, setDelivOrPickup] = useState(true)  //false = delivery
@@ -44,13 +44,7 @@ const TakeOrder = () => {
 
   const [cardMessage, setCardMessage] = useState("")
 
-  Date.prototype.toDateInputValue = (function() {
-    let local = new Date(this);
-    local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
-    return local.toJSON().slice(0,10);
-  });
-
-  let today = new Date().toDateInputValue();
+  
   const [orderDate, setOrderDate] = useState(today)
 
   function handleOrderSubmit() {
@@ -103,7 +97,7 @@ const TakeOrder = () => {
       console.log(res)
       if(res.ok) {
         res.json().then(data => {
-            console.log(data)
+          window.location.reload(false);
         })
       }else {
         res.json().then(error => {

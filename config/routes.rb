@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
   get '/current-user', to: 'users#get_current_user'
+  get '/deliveries/:date', to: 'deliveries#get_by_date'
+  get '/pickups/:date', to: 'pickups#get_by_date'
 
   resources :users, only: [:create]
   resources :pickups

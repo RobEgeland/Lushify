@@ -14,6 +14,10 @@ class DeliveriesController < ApplicationController
         render json: deliveries, include: :delivery_products, status: :ok
     end
 
+    def get_by_date
+        render json: Delivery.where(order_date: params[:date] )
+    end
+
 
     private
 

@@ -23,6 +23,7 @@ const DeliveryCard = ({recipientFname, recipientLname, recipientPhone, address, 
       <h4 style={{float: "right"}}>{city}</h4>
       <h4 style={{float: "right"}}>{postalCode}</h4>
       {am_delivery ? <h4><b>AM Delivery</b></h4> : null}
+
     </div>
   )
 }
