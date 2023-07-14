@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react'
 import Deliveries from './Deliveries'
 import Pickups from './Pickups'
 import RouteCard from './RouteCard'
+import Taken from './Taken'
 import { useContext } from 'react'
 import { UserContext } from '../../Context/UserContext'
 
@@ -9,6 +10,7 @@ const Orders = ({today}) => {
     const [deliveries, setDeliveries] = useState([])
     const [selectedDeliveries, setSelectedDeliveries] = useState([])
     const [pickUps, setPickUps] = useState([])
+    const [taken, setTaken] = useState([])
     const [currentCondition, setCurrentCondition] = useState()
     const [temp, setTemp] = useState()
     const [feelsLike, setFeelsLike] = useState()
@@ -62,6 +64,21 @@ const Orders = ({today}) => {
         setRouteNumber(routeNumber + 1)
     }
 
+    function handleTakenFromPickup(id) {
+        console.log("ran")
+        let order;
+        let newPickups 
+        pickUps.forEach((value, index) => {
+            if (value.id === id) {
+                order = value
+                newPickups = pickUps.filter(order => order.id !== id)
+            }
+        })
+        
+        setTaken([...taken, order])
+        setPickUps(newPickups)
+    }
+
  
     
 
@@ -78,7 +95,8 @@ const Orders = ({today}) => {
             <div style={{float: "right", marginRight: "100px", marginTop: "15px"}}>Wind: {wind}mph</div>
         </div>
         <Deliveries handleRouteCreation={handleRouteCreation} selectedDeliveries={selectedDeliveries} setSelectedDeliveries={setSelectedDeliveries} deliveries={deliveries} />
-        <Pickups pickUps={pickUps}/>
+        <Pickups handleTakenFromPickup={handleTakenFromPickup} pickUps={pickUps}/>
+        <Taken taken={taken}/>
         {routeList}
     </div>
   )

@@ -1,7 +1,7 @@
 import React from 'react'
 import PickupCard from './PickupCard'
 
-const Pickups = ({pickUps}) => {
+const Pickups = ({pickUps, handleTakenFromPickup}) => {
 
   let pickupList;
   
@@ -10,7 +10,9 @@ const Pickups = ({pickUps}) => {
     pickupList = pickUps.map(pickup =>
   
     <PickupCard 
+    handleTakenFromPickup={handleTakenFromPickup}
     key={pickup.id}
+    id={pickup.id}
     customerFname={pickup.customer_first_name}
     customerLname={pickup.customer_last_name}
     customerPhone={pickup.customer_phone}

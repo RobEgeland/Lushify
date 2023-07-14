@@ -1,6 +1,15 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 
-const PickupCard = ({customerFname, customerLname, customerPhone, customerEmail, total, products}) => {
+const PickupCard = ({handleTakenFromPickup, id, customerFname, customerLname, customerPhone, customerEmail, total, products}) => {
+  const [status, setStatus] = useState("Order Recieved")
+
+  useEffect(() => {
+    if(status === "taken-delivered") {
+      console.log('ran')
+      handleTakenFromPickup(id)
+    }
+  }, [status])
+
     console.log(products)
     const productList = products.map(product => <li>{product.description} {product.quantity}</li>)
 
@@ -11,11 +20,11 @@ const PickupCard = ({customerFname, customerLname, customerPhone, customerEmail,
     }
   return (
     <div className='delivery-card'>
-      {/* <label class="checkBox">
-        <input onClick={() => {
-          setSelected(!selected)}} id="ch1" type="checkbox"/>
-        <div class="transition"></div>
-      </label> */}
+      <select onChange={(e) => setStatus(e.target.value)} className='status-dropdown'> 
+        <option value="order-recieved">Order Recieved</option> 
+        <option value="design-complete">Design Complete</option> 
+        <option value="taken-delivered">Taken/Delivered</option> 
+      </select>
       <h4>{customerFname} {customerLname}</h4>
       <h4>{customerPhone}</h4>
       <h4 >{customerEmail}</h4>
