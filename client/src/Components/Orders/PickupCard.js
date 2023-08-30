@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 
-const PickupCard = ({handleTakenFromPickup, id, customerFname, customerLname, customerPhone, customerEmail, total, products}) => {
-  const [status, setStatus] = useState("Order Recieved")
+const PickupCard = ({handleTakenFromPickup, id, customerFname, customerLname, customerPhone, customerEmail, total, products, status}) => {
+  const [orderStatus, setOrderStatus] = useState(status)
 
   useEffect(() => {
     if(status === "taken-delivered") {
@@ -20,7 +20,7 @@ const PickupCard = ({handleTakenFromPickup, id, customerFname, customerLname, cu
     }
   return (
     <div className='delivery-card'>
-      <select onChange={(e) => setStatus(e.target.value)} className='status-dropdown'> 
+      <select onChange={(e) => setOrderStatus(e.target.value)} className='status-dropdown'> 
         <option value="order-recieved">Order Recieved</option> 
         <option value="design-complete">Design Complete</option> 
         <option value="taken-delivered">Taken/Delivered</option> 

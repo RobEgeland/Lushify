@@ -19,6 +19,7 @@ const Pickups = ({pickUps, handleTakenFromPickup}) => {
     customerEmail={pickup.customer_email}
     total={pickup.grand_total}
     products={pickup.products}
+    status={pickup.status}
     />)
   } else {
     pickupList = <div>No Pickups available.</div>;
